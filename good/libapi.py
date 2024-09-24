@@ -21,7 +21,9 @@ def keygen(username, password=None, login=True):
         'username': username,
         'nbf': now,
         'exp': now + not_after
-        }, secret, algorithm='HS256').decode()
+            ```python
+jwt.encode(payload, secret, algorithm='HS256')
+```
 
     return token
 
