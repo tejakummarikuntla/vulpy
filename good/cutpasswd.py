@@ -1,6 +1,6 @@
 import re
 
-with open('/tmp/darkweb2017-top10000.txt') as f:
+     with open('/tmp/darkweb2017-top10000.txt', 'r', encoding='utf-8') as f:
     for password in f.readlines():
 
         password = password.strip()
