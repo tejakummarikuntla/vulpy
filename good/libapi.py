@@ -21,7 +21,7 @@ def keygen(username, password=None, login=True):
         'username': username,
         'nbf': now,
         'exp': now + not_after
-        }, secret, algorithm='HS256').decode()
+           }, secret, algorithm='HS256').encode('utf-8')
 
     return token
 
