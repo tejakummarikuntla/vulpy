@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
+import shlex
 import subprocess
+
+def run_command(command):
+  args = shlex.split(command)
+  subprocess.run(args)
 import sys
 
 program = sys.argv[1]
