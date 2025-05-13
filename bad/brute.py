@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 
+import shlex
 import subprocess
+
+def run_command(command):
+    try:
+        process = subprocess.run(shlex.split(command), check=True, capture_output=True, text=True)
+        return process.stdout
+    except subprocess.CalledProcessError as e:
+        return f"Error: {e.stderr}"
+
+```
+
 import sys
 
 program = sys.argv[1]
