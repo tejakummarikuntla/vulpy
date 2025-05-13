@@ -17,11 +17,27 @@ def keygen(username, password=None, login=True):
             return None
 
     now = time()
-    token = jwt.encode({
+            import base64
+import hashlib
+import hmac
+import json
+import time
+
+def encode_jwt(username, now, not_after, secret):
+    payload = {
         'username': username,
         'nbf': now,
         'exp': now + not_after
-        }, secret, algorithm='HS256').decode()
+    }
+    encoded_payload = base64.urlsafe_b64encode(json.dumps(payload).encode()).decode().replace('=', '')
+    header = {'alg': 'HS256', 'typ': 'JWT'}
+    encoded_header = base64.urlsafe_b64encode(json.dumps(header).encode()).decode().replace('=', '')
+    signature = hmac.new(secret.encode(), (encoded_header + '.' + encoded_payload).encode(), hashlib.sha256).digest()
+    encoded_signature = base64.urlsafe_b64encode(signature).decode().replace('=', '')
+    return encoded_header + '.' + encoded_payload + '.' + encoded_signature
+
+```
+
 
     return token
 
