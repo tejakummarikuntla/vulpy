@@ -10,7 +10,10 @@ from mod_mfa import mod_mfa
 import libsession
 
 app = Flask('vulpy')
-app.config['SECRET_KEY'] = 'aaaaaaa'
+import os
+app.config['SECRET_KEY'] = os.urandom(24)
+```
+
 
 app.register_blueprint(mod_hello, url_prefix='/hello')
 app.register_blueprint(mod_user, url_prefix='/user')
