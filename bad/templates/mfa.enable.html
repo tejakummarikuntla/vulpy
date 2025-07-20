@@ -6,12 +6,14 @@
     <img alt="Embedded Image" src="data:image/png;base64,{{ img_str }}" />
 
     <form method="POST" class="w3-padding-32">
-      <div class="w3-section">
-        <label><b>OTP</b></label>
-        <input class="w3-input w3-border" type="text" name="otp" required>
-        <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">Enable</button>
-      </div>
-    </form>
+  <div class="w3-section">
+    <label><b>OTP</b></label>
+    <input class="w3-input w3-border" type="text" name="otp" required autocomplete="off">
+    <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">Enable</button>
+  </div>
+</form>
+```
+
 
     {{ secret_url }}
 
